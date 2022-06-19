@@ -1,8 +1,26 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_mycash/pages/Auth/Signup.dart';
 import 'package:flutter_mycash/widget/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
+  SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Timer(Duration(seconds: 3), () {
+      Navigator.pushNamed(context, '/signup');
+    });
+    super.initState();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

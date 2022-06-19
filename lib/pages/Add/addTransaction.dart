@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mycash/components/NavBar/navbar.dart';
+import 'package:flutter_mycash/pages/Home/Home.dart';
 import 'package:flutter_mycash/widget/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_mycash/controller/db_helper.dart';
@@ -7,13 +8,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class addTransaction extends StatefulWidget {
- addTransaction({Key? key}) : super(key: key);
+  addTransaction({Key? key}) : super(key: key);
 
   @override
-  State <addTransaction> createState() =>  addTransactionState();
+  State<addTransaction> createState() => addTransactionState();
 }
 
-class  addTransactionState extends State <addTransaction> {
+class addTransactionState extends State<addTransaction> {
   DateTime selectedDate = DateTime.now();
   int? amount;
   String note = "Expence";
@@ -46,13 +47,14 @@ class  addTransactionState extends State <addTransaction> {
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 0.0,
       ),
-      backgroundColor: Color(0xffe2e7ef),
+      backgroundColor: whiteColor,
       //
       body: ListView(
         padding: EdgeInsets.all(
@@ -65,6 +67,7 @@ class  addTransactionState extends State <addTransaction> {
             style: TextStyle(
               fontSize: 32.0,
               fontWeight: FontWeight.w700,
+              color: blackColor,
             ),
           ),
           //
@@ -76,7 +79,7 @@ class  addTransactionState extends State <addTransaction> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: blackColor,
+                  color: blueColor,
                   borderRadius: BorderRadius.circular(
                     16.0,
                   ),
@@ -102,6 +105,7 @@ class  addTransactionState extends State <addTransaction> {
                   ),
                   style: TextStyle(
                     fontSize: 24.0,
+                    color: greyColor,
                   ),
                   onChanged: (val) {
                     try {
@@ -179,6 +183,7 @@ class  addTransactionState extends State <addTransaction> {
                   ),
                   style: TextStyle(
                     fontSize: 20.0,
+                    color: blackColor,
                   ),
                   onChanged: (val) {
                     note = val;
@@ -243,22 +248,22 @@ class  addTransactionState extends State <addTransaction> {
                   "Expense",
                   style: TextStyle(
                     fontSize: 18.0,
-                    color: type == "Expense" ? Colors.white : Colors.black,
+                    color: type == "Expense" ? blackColor : whiteColor,
                   ),
                 ),
                 selectedColor: blueColor,
                 onSelected: (val) {
                   if (val) {
                     setState(() {
-                      type = "Expense";
+                      type = "Pengeluaran";
 
-                      if (note.isEmpty || note == "Income") {
-                        note = 'Expense';
+                      if (note.isEmpty || note == "Pemasukan") {
+                        note = 'Pengeluaran';
                       }
                     });
                   }
                 },
-                selected: type == "Expense" ? true : false,
+                selected: type == "Pengeluaran" ? true : false,
               ),
             ],
           ),
@@ -285,7 +290,7 @@ class  addTransactionState extends State <addTransaction> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: blackColor,
+                      color: blueColor,
                       borderRadius: BorderRadius.circular(
                         16.0,
                       ),
@@ -307,7 +312,7 @@ class  addTransactionState extends State <addTransaction> {
                     "${selectedDate.day} ${months[selectedDate.month - 1]}",
                     style: TextStyle(
                       fontSize: 20.0,
-                      color: Colors.grey[700],
+                      color: greyColor,
                     ),
                   ),
                 ],
@@ -326,7 +331,7 @@ class  addTransactionState extends State <addTransaction> {
                 if (amount != null) {
                   DbHelper dbHelper = DbHelper();
                   dbHelper.addData(amount!, selectedDate, type, note);
-                  Navigator.of(context).pop(
+                  Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => Navbar(),
                     ),

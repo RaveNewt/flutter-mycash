@@ -127,30 +127,7 @@ class _DashboardState extends State<Dashboard> {
       ),
       backgroundColor: blackColor,
       //
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context)
-              .push(
-            MaterialPageRoute(
-              builder: (context) => addTransaction(),
-            ),
-          )
-              .then((value) {
-            setState(() {});
-          });
-        },
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            16.0,
-          ),
-        ),
-        backgroundColor: blackColor,
-        child: Icon(
-          Icons.add_outlined,
-          size: 32.0,
-        ),
-      ),
+
       //
       body: FutureBuilder<List<TransactionModel>>(
         future: fetch(),
@@ -209,7 +186,7 @@ class _DashboardState extends State<Dashboard> {
                               backgroundColor: Colors.transparent,
                               child: Image.asset(
                                 "assets/Logo.png",
-                                width: 64.0,
+                                width: 48.0,
                               ),
                             ),
                           ),
@@ -218,46 +195,19 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           SizedBox(
                             width: 200.0,
-                            child: Text(
-                              "Welcome Ihsan",
-                              style: TextStyle(
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.w700,
-                                color: whiteColor,
+                            child: Center(
+                              child: Text(
+                                "Welcome Ihsan",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w700,
+                                  color: whiteColor,
+                                ),
+                                maxLines: 1,
                               ),
-                              maxLines: 1,
                             ),
                           ),
                         ],
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            12.0,
-                          ),
-                          color: Colors.white70,
-                        ),
-                        padding: EdgeInsets.all(
-                          12.0,
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context)
-                                .push(
-                              MaterialPageRoute(
-                                builder: (context) => Setting(),
-                              ),
-                            )
-                                .then((value) {
-                              setState(() {});
-                            });
-                          },
-                          child: Icon(
-                            Icons.settings,
-                            size: 32.0,
-                            color: Color(0xff3E454C),
-                          ),
-                        ),
                       ),
                     ],
                   ),
@@ -266,7 +216,7 @@ class _DashboardState extends State<Dashboard> {
                 selectMonth(),
                 //
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   margin: EdgeInsets.all(
                     12.0,
                   ),
@@ -299,8 +249,8 @@ class _DashboardState extends State<Dashboard> {
                           Text(
                             'Total Balance',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 22.0,
+                            style: GoogleFonts.montserrat(
+                              fontSize: 20.0,
                               // fontWeight: FontWeight.w700,
                               color: Colors.white,
                             ),
@@ -311,7 +261,7 @@ class _DashboardState extends State<Dashboard> {
                           Text(
                             'Rs $totalBalance',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: GoogleFonts.montserrat(
                               fontSize: 36.0,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
@@ -346,15 +296,15 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   child: Text(
                     "${months[today.month - 1]} ${today.year}",
-                    style: TextStyle(
-                      fontSize: 32.0,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 24.0,
                       color: whiteColor,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: bold,
                     ),
                   ),
                 ),
                 //
-                dataSet.isEmpty || dataSet.length < 2
+                dataSet.isEmpty || dataSet.length > 2
                     ? Container(
                         padding: EdgeInsets.symmetric(
                           vertical: 40.0,
@@ -660,7 +610,7 @@ class _DashboardState extends State<Dashboard> {
                       padding: const EdgeInsets.all(6.0),
                       child: Text(
                         "${date.day} ${months[date.month - 1]} ",
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
                           color: Colors.grey[800],
                         ),
                       ),
@@ -672,7 +622,7 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     Text(
                       "- $value",
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                         fontSize: 24.0,
                         fontWeight: FontWeight.w700,
                       ),
@@ -682,7 +632,7 @@ class _DashboardState extends State<Dashboard> {
                       padding: const EdgeInsets.all(6.0),
                       child: Text(
                         note,
-                        style: TextStyle(
+                        style: GoogleFonts.montserrat(
                           color: Colors.grey[800],
                         ),
                       ),
@@ -808,7 +758,7 @@ class _DashboardState extends State<Dashboard> {
               });
             },
             child: Container(
-              height: 50.0,
+              height: 45.0,
               width: MediaQuery.of(context).size.width * 0.3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
@@ -834,8 +784,8 @@ class _DashboardState extends State<Dashboard> {
               });
             },
             child: Container(
-              height: 50.0,
-              width: MediaQuery.of(context).size.width * 0.3,
+              height: 45.0,
+              width: MediaQuery.of(context).size.width * 0.2,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
                   8.0,
