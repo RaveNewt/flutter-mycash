@@ -11,3 +11,5 @@ Color purpleColor = Color(0xffFF65F9);
 FontWeight semibold= FontWeight.w600;
 FontWeight medium= FontWeight.w500;
 FontWeight bold= FontWeight.bold;
+
+double defaultMargin = 24;

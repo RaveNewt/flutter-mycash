@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mycash/pages/Add/addTransaction.dart';
+import 'package:flutter_mycash/pages/Home/Dashboard2.dart';
 import 'package:flutter_mycash/pages/Home/Home.dart';
 import 'package:flutter_mycash/pages/Notif/Notification.dart';
 import 'package:flutter_mycash/pages/Setting/Setting.dart';
@@ -33,13 +35,14 @@ class _NavbarState extends State<Navbar> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/add');
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => addTransaction()));
           },
           child: Icon(
             Icons.add,
             color: whiteColor,
           ),
-          backgroundColor: blackColor,
+          backgroundColor: purpleColor,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
