@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mycash/components/NavBar/navbar.dart';
+import 'package:flutter_mycash/pages/Add/addTransaction.dart';
 import 'package:flutter_mycash/pages/Auth/Signin.dart';
+import 'package:flutter_mycash/pages/Home/Home.dart';
 import 'package:flutter_mycash/pages/Splash/SplashScreen.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() => runApp(MyCash());
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('money');
+  runApp(MyCash());
+  }
+
 
 class MyCash extends StatelessWidget {
   @override
