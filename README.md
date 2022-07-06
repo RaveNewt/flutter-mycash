@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+## Video
+[Link](https://drive.google.com/file/d/1XnxzVBFYTD-QkYI-Ev0fDMHyTeOXTgqE/view?usp=sharing)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
